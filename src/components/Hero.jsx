@@ -2,6 +2,7 @@ import { FaInstagram, FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import CV from "../assets/CV.pdf"
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -50,13 +51,15 @@ const Hero = () => {
           strive to write maintainable, scalable code.
         </p>
 
-        <button
-          className="bg-blue-500 text-white px-6 py-2 my-6 rounded-lg font-semibold shadow-lg hover:bg-blue-600 transition-all duration-300 w-fit"
+        <a
+          href={CV}
+          download
+          className="bg-blue-500 text-white px-6 py-2 my-6 rounded-lg font-semibold shadow-lg hover:bg-blue-600 transition-all duration-300 w-fit cursor-pointer"
           data-aos="fade-right"
           data-aos-delay="500"
         >
           Download CV
-        </button>
+        </a>
 
         <div
           className="flex flex-wrap justify-center lg:justify-start items-center gap-4 mt-4"
