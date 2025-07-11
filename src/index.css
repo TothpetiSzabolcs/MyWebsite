@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+@import "tailwindcss";
+
+
+
+p {
+    font-family: 'DM Serif Text', serif;
+}
+
+h1 {
+    font-family: 'Roboto Slab', serif;
+}
+
+.bg-gray-900 {
+    background-color: hsl(212deg 18.99% 15.49%);
+}
+
+.bg-gray-950 {
+    background-color: hsl(213deg 19% 11%);
+}
+
+html {
+    scroll-behavior: smooth;
+}
