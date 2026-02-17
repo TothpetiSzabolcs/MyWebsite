@@ -1,7 +1,7 @@
 const DEFAULT = {
-  title: "Szabolcs Tóthpeti — Frontend Developer",
+  title: "Szabolcs Tóthpeti — Web Developer",
   description:
-    "Frontend developer specializing in React, Tailwind CSS, and JavaScript. Building clean, responsive, and modern web applications.",
+    "Web developer specializing in React, Tailwind CSS, and JavaScript. Building clean, responsive, and modern web applications.",
   image: "/og-image.jpg",
   url: "https://szabolcstothpeti.dev",
 };

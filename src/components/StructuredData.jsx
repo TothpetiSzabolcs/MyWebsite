@@ -6,7 +6,7 @@ const StructuredData = () => {
       "@context": "https://schema.org",
       "@type": "Person",
       name: "Szabolcs Tóthpeti",
-      jobTitle: "Frontend Developer",
+      jobTitle: "Web Developer",
       url: "https://szabolcstothpeti.dev",
       sameAs: [
         "https://github.com/TothpetiSzabolcs",
@@ -24,7 +24,7 @@ const StructuredData = () => {
         "MongoDB",
         "HTML",
         "CSS",
-        "Frontend Development",
+        "Web Development",
       ],
       nationality: { "@type": "Country", name: "Hungary" },
     };
@@ -35,7 +35,7 @@ const StructuredData = () => {
       name: "Szabolcs Tóthpeti Portfolio",
       url: "https://szabolcstothpeti.dev",
       description:
-        "Portfolio website of Szabolcs Tóthpeti, a frontend developer specializing in React and modern web technologies.",
+        "Portfolio website of Szabolcs Tóthpeti, a Web developer specializing in React and modern web technologies.",
     };
 
     const inject = (data, id) => {

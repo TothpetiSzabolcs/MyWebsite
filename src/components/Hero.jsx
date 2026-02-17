@@ -110,7 +110,7 @@ const Hero = () => {
                 transform: visible ? "translateY(0)" : "translateY(30px)",
               }}
             >
-              Frontend Developer
+              Web Developer
             </h2>
 
             {/* Description */}

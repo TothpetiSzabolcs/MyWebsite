@@ -59,7 +59,7 @@ const Footer = () => {
                 fontFamily: "'Syne', sans-serif",
               }}
             >
-              Frontend Developer
+              Web Developer
             </p>
 
             {/* Social icons */}

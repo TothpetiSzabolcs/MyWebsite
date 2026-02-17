@@ -6,7 +6,7 @@ const GetInTouch = () => {
     <main>
       <SEO
         title="Contact"
-        description="Get in touch with Szabolcs Tóthpeti. Available for freelance work, collaborations, and new opportunities in frontend development."
+        description="Get in touch with Szabolcs Tóthpeti. Available for freelance work, collaborations, and new opportunities in web development."
         url="/getintouch"
       />
       <Contact />

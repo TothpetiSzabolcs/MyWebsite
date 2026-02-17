@@ -141,7 +141,7 @@ const AboutMe = () => {
                 fontFamily: "'Syne', sans-serif",
               }}
             >
-              Frontend Developer — Hungary
+              Web Developer — Hungary
             </p>
             <p
               className="text-sm sm:text-base leading-relaxed max-w-lg"
