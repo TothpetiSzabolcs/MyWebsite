@@ -2,8 +2,9 @@ import { FaInstagram, FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { HiArrowDown } from "react-icons/hi2";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import CV from "../assets/CV.pdf";
+import { useEffect, useState, useRef } from "react";
+import CV_HU from "../assets/CV.pdf";
+import CV_EN from "../assets/CV_EN.pdf";
 import Profile from "../assets/profilePicture.webp";
 
 const socials = [
@@ -16,10 +17,20 @@ const socials = [
 
 const Hero = () => {
   const [visible, setVisible] = useState(false);
+  const [cvOpen, setCvOpen] = useState(false);
+  const cvRef = useRef(null);
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 100);
     return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (cvRef.current && !cvRef.current.contains(e.target)) setCvOpen(false);
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
   return (
@@ -110,7 +121,7 @@ const Hero = () => {
                 transform: visible ? "translateY(0)" : "translateY(30px)",
               }}
             >
-              Web Developer
+              Frontend Developer
             </h2>
 
             {/* Description */}
@@ -135,9 +146,59 @@ const Hero = () => {
                 transform: visible ? "translateY(0)" : "translateY(30px)",
               }}
             >
-              <a href={CV} download className="btn-glow">
-                Download CV
-              </a>
+              <div className="relative z-50" ref={cvRef}>
+                <button
+                  onClick={() => setCvOpen(!cvOpen)}
+                  className="btn-glow flex items-center gap-2"
+                >
+                  Download CV
+                  <HiArrowDown
+                    className={`w-4 h-4 transition-transform duration-300 ${cvOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                {cvOpen && (
+                  <div
+                    className="absolute top-full left-0 mt-2 min-w-[180px] py-2 rounded-xl"
+                    style={{
+                      zIndex: 9999,
+                      background: "rgba(10, 10, 15, 0.98)",
+                      backdropFilter: "blur(20px)",
+                      border: "1px solid rgba(0, 212, 255, 0.25)",
+                      boxShadow:
+                        "0 12px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 212, 255, 0.08)",
+                    }}
+                  >
+                    <a
+                      href={CV_HU}
+                      download="Tothpeti_Szabolcs_CV_HU.pdf"
+                      className="flex items-center gap-3 px-5 py-3 text-sm font-medium transition-colors duration-200 hover:bg-white/8"
+                      style={{ color: "var(--text-primary)" }}
+                      onClick={() => setCvOpen(false)}
+                    >
+                      <span>🇭🇺</span>
+                      <span>Magyar</span>
+                    </a>
+                    <div
+                      className="mx-4 my-1"
+                      style={{
+                        height: "1px",
+                        background: "rgba(255,255,255,0.08)",
+                      }}
+                    />
+                    <a
+                      href={CV_EN}
+                      download="Tothpeti_Szabolcs_CV_EN.pdf"
+                      className="flex items-center gap-3 px-5 py-3 text-sm font-medium transition-colors duration-200 hover:bg-white/8"
+                      style={{ color: "var(--text-primary)" }}
+                      onClick={() => setCvOpen(false)}
+                    >
+                      <span>🇬🇧</span>
+                      <span>English</span>
+                    </a>
+                  </div>
+                )}
+              </div>
               <Link to="/getintouch" className="btn-ghost">
                 Get in Touch
               </Link>
@@ -145,7 +206,7 @@ const Hero = () => {
 
             {/* Socials */}
             <div
-              className="flex items-center gap-3 transition-all duration-700 delay-500"
+              className="relative z-10 flex items-center gap-3 transition-all duration-700 delay-500"
               style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(30px)",
