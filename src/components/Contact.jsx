@@ -46,7 +46,7 @@ const Contact = () => {
         "service_nnm3h2a",
         "template_trcpprl",
         e.target,
-        "fl541U31RaOoZ4v0K"
+        "VyUMzb_2NCj2RE3BC"
       );
       setSent(true);
       setTimeout(() => setSent(false), 3000);

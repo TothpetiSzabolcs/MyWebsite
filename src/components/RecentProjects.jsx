@@ -36,8 +36,9 @@ const RecentProjects = () => {
   const next = () =>
     goTo(active === projects.length - 1 ? 0 : active + 1);
 
-  // Auto-advance
+  // Auto-advance (only if 3+ projects)
   useEffect(() => {
+    if (projects.length < 3) return;
     const interval = setInterval(next, 5000);
     return () => clearInterval(interval);
   }, [active]);
