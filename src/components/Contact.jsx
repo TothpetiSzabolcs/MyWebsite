@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { FaMobileAlt } from "react-icons/fa";
 import { IoSend } from "react-icons/io5";
 import { HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
-import emailjs from "emailjs-com";
 
 const Contact = () => {
   const [sent, setSent] = useState(false);
@@ -42,16 +41,26 @@ const Contact = () => {
 
     try {
       setLoading(true);
-      await emailjs.sendForm(
-        "service_nnm3h2a",
-        "template_trcpprl",
-        e.target,
-        "VyUMzb_2NCj2RE3BC"
-      );
-      setSent(true);
-      setTimeout(() => setSent(false), 3000);
-      setError(false);
-      form.reset();
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "852db71c-01f7-4727-ab70-aa3b5b784ec7",
+          email,
+          message,
+          subject: `New Portfolio Message from ${email}`,
+          from_name: "Portfolio Contact Form",
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSent(true);
+        setTimeout(() => setSent(false), 3000);
+        setError(false);
+        form.reset();
+      } else {
+        throw new Error("Failed");
+      }
     } catch (err) {
       setError("Failed to send. Please try again.");
       setTimeout(() => setError(false), 3000);
