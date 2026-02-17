@@ -1,85 +1,117 @@
 import ServiceCard from "./ServiceCard";
-import { DiResponsive } from "react-icons/di";
+import { DiResponsive, DiNodejs } from "react-icons/di";
 import { RiCodeAiLine } from "react-icons/ri";
-import { FaJsSquare } from "react-icons/fa";
-import { DiNodejs } from "react-icons/di";
-import { FaReact } from "react-icons/fa";
+import { FaJsSquare, FaReact, FaGithubSquare } from "react-icons/fa";
 import { SiMongodb } from "react-icons/si";
-import { FaGithubSquare } from "react-icons/fa";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { useEffect } from "react";
-
 
 const Services = () => {
   const serviceCards = [
     {
-      icon: <DiResponsive className=" h-30 w-30 text-blue-500 transform -translate-y-8"/>,
+      icon: <DiResponsive className="w-8 h-8" />,
       title: "Responsive Design",
-      description: "I create responsive designs that look great on all devices, from desktops to mobile phones."
+      description:
+        "I create responsive designs that look great on all devices, from desktops to mobile phones.",
     },
     {
-      icon: <RiCodeAiLine className=" h-20 w-30 text-blue-500 transform -translate-y-0 mb-10"/>,
+      icon: <RiCodeAiLine className="w-8 h-8" />,
       title: "Clean Code",
-      description: "I write clean, maintainable and scalable code using modern JavaScript best practices."
+      description:
+        "I write clean, maintainable and scalable code using modern JavaScript best practices.",
     },
     {
-      icon: <FaJsSquare className="h-15 w-15 text-blue-500 transform -translate-y-4" />,
+      icon: <FaJsSquare className="w-8 h-8" />,
       title: "JavaScript",
-      description: "With JavaScript, I handle DOM manipulation, async logic, and use functions and fetch calls to create seamless user interactions."
+      description:
+        "With JavaScript, I handle DOM manipulation, async logic, and use functions and fetch calls to create seamless user interactions.",
     },
     {
-      icon: <DiNodejs className="h-30 w-30 text-blue-500 transform -translate-y-4" />,
+      icon: <DiNodejs className="w-8 h-8" />,
       title: "Express",
-      description: "I use Express and Node.js to create simple backends and connect web apps to databases and APIs."
+      description:
+        "I use Express and Node.js to create simple backends and connect web apps to databases and APIs.",
     },
     {
-      icon: <FaReact className="h-15 w-15 text-blue-500 transform -translate-y-4" />,
+      icon: <FaReact className="w-8 h-8" />,
       title: "React",
-      description: "I use React to create fast, reusable, and interactive user interfaces with modern state management and component-based architecture."
+      description:
+        "I use React to create fast, reusable, and interactive user interfaces with modern state management and component-based architecture.",
     },
     {
-      icon: <SiMongodb className="h-15 w-15 text-blue-500 transform -translate-y-4" />,
+      icon: <SiMongodb className="w-8 h-8" />,
       title: "MongoDB",
-      description: "MongoDB helps me store data in a flexible format, making it easy to build and scale modern web apps."
+      description:
+        "MongoDB helps me store data in a flexible format, making it easy to build and scale modern web apps.",
     },
     {
-      icon: <FaGithubSquare className="h-15 w-15 text-blue-500 transform -translate-y-4" />,
+      icon: <FaGithubSquare className="w-8 h-8" />,
       title: "Git & GitHub",
-      description: "I use Git for version control and GitHub to collaborate, manage code, and keep a clean project history."
-    }
-  ]
-
-    useEffect(() => {
-        AOS.init({duration: 700, once: true});
-    }, []);
+      description:
+        "I use Git for version control and GitHub to collaborate, manage code, and keep a clean project history.",
+    },
+  ];
 
   return (
-    <div className="bg-gray-950 w-full px-6 sm:px-10 md:px-12 lg:px-20 py-[10.3%]">
-      <div className="pb-20">
-  <h1
-    className="text-3xl font-bold text-blue-500 mb-16 w-fit  mx-auto text-center lg:text-left lg:mx-0 xl:mx-0 2xl:mx-0 xl:text-left 2xl:text-left lg:pl-10"
-    data-aos="fade-right"
-    data-aos-duration="1000"
-  >
-    Services
-  </h1>
-      </div>
-
-  <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-    {serviceCards.map((card, index) => (
-      <div key={index} className="h-full">
-      <ServiceCard
-        icon={card.icon}
-        title={card.title}
-        description={card.description}
+    <section
+      className="relative w-full overflow-hidden"
+      style={{ background: "var(--bg-secondary)" }}
+    >
+      {/* Background orb */}
+      <div
+        className="gradient-orb w-[600px] h-[600px] -top-60 right-[-200px]"
+        style={{ background: "var(--accent-secondary)", animationDelay: "2s" }}
       />
-      </div>
-    ))}
-  </div>
-</div>
-  )
-}
 
-export default Services
+      {/* Top divider line */}
+      <div
+        className="w-full h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, var(--border-subtle), transparent)",
+        }}
+      />
+
+      <div className="relative z-10 container-main py-16 lg:py-20">
+        {/* Section header */}
+        <div className="mb-10">
+          <p
+            className="text-xs font-semibold tracking-[0.2em] uppercase mb-3"
+            style={{ color: "var(--accent-primary)", fontFamily: "'Syne', sans-serif" }}
+          >
+            What I Do
+          </p>
+          <h2 className="section-title mb-4">Services</h2>
+          <p
+            className="max-w-md text-sm"
+            style={{ color: "var(--text-muted)" }}
+          >
+            Technologies and skills I use to bring your ideas to life.
+          </p>
+        </div>
+
+        {/* Cards grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          {serviceCards.map((card, index) => (
+            <ServiceCard
+              key={index}
+              icon={card.icon}
+              title={card.title}
+              description={card.description}
+              index={index}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom divider line */}
+      <div
+        className="w-full h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, var(--border-subtle), transparent)",
+        }}
+      />
+    </section>
+  );
+};
+
+export default Services;

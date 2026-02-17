@@ -1,113 +1,227 @@
-import { FaInstagram } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { FaReact } from "react-icons/fa";
-import { RiTailwindCssFill } from "react-icons/ri";
-import { BiArrowToTop } from "react-icons/bi";
+import { HiArrowUp } from "react-icons/hi2";
+import { Link, useLocation } from "react-router-dom";
 
-import me from "../assets/me.svg";
+const socials = [
+  { icon: FaInstagram, href: "https://www.instagram.com/szabolcstothpeti/", label: "Instagram" },
+  { icon: FaFacebook, href: "https://www.facebook.com/szabolcs.tothpeti", label: "Facebook" },
+  { icon: FaXTwitter, href: "https://x.com/STothpeti", label: "X" },
+  { icon: FaGithub, href: "https://github.com/TothpetiSzabolcs", label: "GitHub" },
+  { icon: FaLinkedin, href: "https://www.linkedin.com/in/szabolcs-tothpeti-7867b52a0/", label: "LinkedIn" },
+];
 
-import { Link } from "react-router-dom";
+const quickLinks = [
+  { to: "/whoami", label: "Who Am I?" },
+  { to: "/projects", label: "Projects" },
+  { to: "/getintouch", label: "Contact" },
+  { to: "/experience", label: "Experience" },
+];
 
 const Footer = () => {
+  const location = useLocation();
+
   return (
-    <div className="bg-gray-950 w-full px-6 md:px-12 lg:px-30 py-5">
-      <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start text-center lg:text-left gap-10">
-        <div className="flex flex-col items-center lg:items-start">
-          <Link to="/">
-            <img
-              src={me}
-              alt="logo"
-              className="w-24 h-32 lg:w-30 lg:translate-x-10 xl:translate-x-10 lg:h-40 object-cover rounded-lg border-2 border-gray-700 opacity-40 transition-all duration-300"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            />
-          </Link>
-          <h1 className="text-xl xl:text-2xl lg:text-2xl md:text-xl sm:text-xl font-bold mt-4 bg-gradient-to-r from-blue-300 to-blue-700 bg-clip-text text-transparent">
-            Szabolcs Tóthpeti
-          </h1>
-        </div>
+    <footer
+      className="relative w-full overflow-hidden"
+      style={{ background: "var(--bg-secondary)" }}
+    >
+      {/* Top gradient line */}
+      <div
+        className="w-full h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, var(--accent-primary), var(--accent-secondary), transparent)",
+        }}
+      />
 
-        <div className="flex flex-col items-center gap-4 pt-0 md:pt-0 sm:pt-0 lg:pt-20 xl:pt-20">
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to="https://www.instagram.com/szabolcstothpeti/"
-              target="_blank"
-            >
-              <FaInstagram className="h-6 w-6 text-white" />
-            </Link>
-            <Link
-              to="https://www.facebook.com/szabolcs.tothpeti"
-              target="_blank"
-            >
-              <FaFacebook className="h-6 w-6 text-white" />
-            </Link>
-            <Link to="https://x.com/STothpeti" target="_blank">
-              <FaXTwitter className="h-6 w-6 text-white" />
-            </Link>
-            <Link to="https://github.com/TothpetiSzabolcs" target="_blank">
-              <FaGithub className="h-6 w-6 text-white" />
-            </Link>
-            <Link
-              to="https://www.linkedin.com/in/szabolcs-tothpeti-7867b52a0/"
-              target="_blank"
-            >
-              <FaLinkedin className="h-6 w-6 text-white" />
-            </Link>
-          </div>
-
-          <p className="text-gray-700 text-sm pt-5 xl:pt-15 lg:pt-15 md:pt-5 sm:pt-5">
-            2025 Created by Szabolcs Tóthpeti ©
-          </p>
-
-          <div className="flex gap-2 justify-center text-gray-500 text-xs">
-            <span>Made with</span>
-            <FaReact className="h-4 w-4 text-blue-500" />
-            <span>&</span>
-            <RiTailwindCssFill className="h-4 w-4 text-blue-400" />
-          </div>
-        </div>
-
-        <div className="flex flex-col items-center lg:items-end gap-2">
-          <button className=" bg-blue-500 text-white px-4 py-2 rounded-md mb-8 hover:bg-blue-600 transition-all duration-300">
+      <div className="relative z-10 container-main pt-12 pb-6">
+        {/* Main grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 mb-10">
+          {/* Brand column */}
+          <div className="flex flex-col items-center md:items-start">
             <Link
               to="/"
-              className="flex items-center justify-center gap-2"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
-              <BiArrowToTop className="h-5 w-5" />
-              <span className="text-xs">Back to top</span>
+              <h2
+                className="text-2xl font-bold mb-1 transition-opacity duration-300 hover:opacity-70"
+                style={{ fontFamily: "'Syne', sans-serif" }}
+              >
+                <span className="text-gradient">Szabolcs</span>
+                <span style={{ color: "var(--text-muted)" }}> Tóthpeti</span>
+              </h2>
             </Link>
-          </button>
-          <h1 className="text-white text-xs font-semibold pb-2">Quick links</h1>
-          <Link
-            to="/about"
-            className="text-gray-500 text-xs hover:text-blue-500 transition"
+            <p
+              className="text-xs mb-6"
+              style={{
+                color: "var(--text-muted)",
+                fontFamily: "'Syne', sans-serif",
+              }}
+            >
+              Frontend Developer
+            </p>
+
+            {/* Social icons */}
+            <div className="flex items-center gap-2">
+              {socials.map(({ icon: Icon, href, label }) => (
+                <Link
+                  key={label}
+                  to={href}
+                  target="_blank"
+                  className="w-9 h-9 flex items-center justify-center rounded-lg transition-all duration-300"
+                  style={{
+                    background: "rgba(255, 255, 255, 0.03)",
+                    border: "1px solid rgba(255, 255, 255, 0.06)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "rgba(0, 212, 255, 0.1)";
+                    e.currentTarget.style.borderColor = "rgba(0, 212, 255, 0.25)";
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "rgba(255, 255, 255, 0.03)";
+                    e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.06)";
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }}
+                  aria-label={label}
+                >
+                  <Icon
+                    className="w-3.5 h-3.5"
+                    style={{ color: "var(--text-muted)" }}
+                  />
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick links column */}
+          <div className="flex flex-col items-center md:items-start">
+            <h3
+              className="text-xs font-semibold tracking-[0.15em] uppercase mb-5"
+              style={{
+                color: "var(--text-secondary)",
+                fontFamily: "'Syne', sans-serif",
+              }}
+            >
+              Quick Links
+            </h3>
+            <nav className="flex flex-col items-center md:items-start gap-3">
+              {quickLinks.map((link) => {
+                const isActive = location.pathname === link.to;
+                return (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className="text-sm transition-all duration-300 hover:translate-x-1"
+                    style={{
+                      color: isActive
+                        ? "var(--accent-primary)"
+                        : "var(--text-muted)",
+                      fontFamily: "'Outfit', sans-serif",
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isActive)
+                        e.currentTarget.style.color = "var(--text-secondary)";
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive)
+                        e.currentTarget.style.color = "var(--text-muted)";
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
+
+          {/* Back to top + info column */}
+          <div className="flex flex-col items-center md:items-end gap-6">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="group flex items-center gap-2.5 px-5 py-2.5 rounded-xl transition-all duration-300"
+              style={{
+                background: "rgba(255, 255, 255, 0.03)",
+                border: "1px solid rgba(255, 255, 255, 0.06)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(0, 212, 255, 0.08)";
+                e.currentTarget.style.borderColor = "rgba(0, 212, 255, 0.2)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255, 255, 255, 0.03)";
+                e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.06)";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
+              <HiArrowUp
+                className="w-4 h-4"
+                style={{ color: "var(--accent-primary)" }}
+              />
+              <span
+                className="text-xs font-medium"
+                style={{
+                  color: "var(--text-secondary)",
+                  fontFamily: "'Syne', sans-serif",
+                }}
+              >
+                Back to top
+              </span>
+            </button>
+
+            <div className="text-center md:text-right">
+              <p
+                className="text-xs leading-relaxed"
+                style={{ color: "var(--text-muted)" }}
+              >
+                Designed & built with
+              </p>
+              <p
+                className="text-xs font-medium mt-1"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                React + Tailwind CSS
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div
+          className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
+          style={{
+            borderTop: "1px solid rgba(255, 255, 255, 0.04)",
+          }}
+        >
+          <p
+            className="text-xs"
+            style={{
+              color: "var(--text-muted)",
+              fontFamily: "'Outfit', sans-serif",
+            }}
           >
-            Who am I?
-          </Link>
-          <Link
-            to="/projects"
-            className="text-gray-500 text-xs hover:text-blue-500 transition"
-          >
-            Projects
-          </Link>
-          <Link
-            to="/contact"
-            className="text-gray-500 text-xs hover:text-blue-500 transition"
-          >
-            Get in touch
-          </Link>
-          <Link
-            to="/skills"
-            className="text-gray-500 text-xs hover:text-blue-500 transition"
-          >
-            Skills
-          </Link>
+            © 2025 Szabolcs Tóthpeti. All rights reserved.
+          </p>
+
+          <div className="flex items-center gap-1.5">
+            <span
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ background: "var(--accent-primary)", opacity: 0.5 }}
+            />
+            <span
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ background: "var(--accent-secondary)", opacity: 0.5 }}
+            />
+            <span
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ background: "var(--accent-warm)", opacity: 0.5 }}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

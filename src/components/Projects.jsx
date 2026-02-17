@@ -1,14 +1,8 @@
 import { HiOutlineCodeBracket } from "react-icons/hi2";
-import SEO from "../components/SEO";
 
 const Projects = () => {
   return (
     <main>
-      <SEO
-        title="Projects"
-        description="Portfolio of recent projects by Szabolcs Tóthpeti — web applications built with React, Node.js, and modern frontend technologies."
-        url="/projects"
-      />
       <section
         className="relative w-full flex items-center justify-center overflow-hidden"
         style={{ background: "var(--bg-primary)", minHeight: "calc(100vh - 80px)" }}
