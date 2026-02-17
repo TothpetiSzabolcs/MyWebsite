@@ -59,7 +59,7 @@ export default function Header() {
               src={logo}
               alt="Logo"
               className={`transition-all duration-500 ${
-                scrolled ? "h-12 w-12" : "h-14 w-14"
+                scrolled ? "h-14 w-14" : "h-16 w-16"
               } hover:opacity-80`}
             />
           </Link>

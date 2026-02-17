@@ -1,15 +1,21 @@
 import { useState, useEffect, useCallback } from "react";
-import img1 from "../assets/img1.jpg";
-import img2 from "../assets/img2.jpg";
-import img3 from "../assets/img3.jpg";
-import img4 from "../assets/img4.jpg";
+import bermudaImg from "../assets/bermuda-hero.jpg";
+import szelImg from "../assets/szeltech-hero.jpg";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi2";
 
 const projects = [
-  { image: img1, title: "Project One", tag: "Web App" },
-  { image: img2, title: "Project Two", tag: "Frontend" },
-  { image: img3, title: "Project Three", tag: "Full Stack" },
-  { image: img4, title: "Project Four", tag: "Design" },
+  {
+    image: bermudaImg,
+    title: "Bermuda Vendégház",
+    tag: "React",
+    url: "https://bermuda-vendeghaz.hu",
+  },
+  {
+    image: szelImg,
+    title: "SzelTech",
+    tag: "Next.js",
+    url: "https://szeltech.hu/hu",
+  },
 ];
 
 const RecentProjects = () => {
@@ -152,7 +158,13 @@ const RecentProjects = () => {
                       return 3;
                     })(),
                   }}
-                  onClick={() => goTo(i)}
+                  onClick={() => {
+                    if (i === active && project.url) {
+                      window.open(project.url, "_blank", "noopener,noreferrer");
+                    } else {
+                      goTo(i);
+                    }
+                  }}
                 >
                   <div className="group relative rounded-2xl overflow-hidden">
                     {/* Gradient border on active */}

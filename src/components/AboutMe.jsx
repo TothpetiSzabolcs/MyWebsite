@@ -155,7 +155,7 @@ const AboutMe = () => {
             {/* Quick stats */}
             <div className="flex flex-wrap justify-center md:justify-start gap-8 mt-8">
               {[
-                { value: "6+", label: "Countries Lived In" },
+                { value: "2+", label: "Projects Delivered" },
                 { value: "2025", label: "CodeCool Graduate" },
                 { value: "∞", label: "Curiosity" },
               ].map((stat, i) => (
